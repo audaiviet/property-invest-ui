@@ -1,0 +1,10 @@
+GET http://localhost:5000/WeatherForecast/Birmingham
+###
+GET http://localhost:5000/WeatherForecast/Surrey
+###
+GET http://localhost:5000/WeatherForecast/new york
+###
+GET http://localhost:5000/WeatherForecast/chicago
+###
+GET http://localhost:5000/health
+###
