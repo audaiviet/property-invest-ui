@@ -1,10 +1,5 @@
-﻿using DatabaseService.Controllers;
-using DatabaseService.Entities;
-using DatabaseService.Interfaces;
-using FakeItEasy;
-using Microsoft.AspNetCore.Mvc;
+﻿using DatabaseService.Entities;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Moq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +7,6 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -30,6 +24,7 @@ namespace DatabaseService.Tests
         [Fact]
         public async Task CanCreateAllProjects()
         {
+            //Need to limit return data
             // Act 
             var response = await _client.GetAsync("/api/projects/");
             response.EnsureSuccessStatusCode();
@@ -62,6 +57,15 @@ namespace DatabaseService.Tests
 
             //Act
             var response = await _client.PostAsync("/api/projects", content);
+
+            //Assert
+            response.EnsureSuccessStatusCode();
+
+            // Clean up
+            var location = response.Headers.Location;
+            var projectId = location.Segments[location.Segments.Count() - 1];
+
+            response = await _client.DeleteAsync($"/api/projects/{projectId}");
             response.EnsureSuccessStatusCode();
         }
     }
