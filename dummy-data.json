@@ -1,0 +1,102 @@
+[
+    {
+      "id": "60856fb12765570ee4ad7a15",
+      "name": "Kirlin, Schulist and Altenwerth",
+      "startDate": "2020-11-01T17:14:43Z",
+      "endDate": "2029-12-16T14:59:01Z",
+      "estimatedDurationInDays": 22,
+      "estimatedCost": 361032,
+      "annualInterestRateOffered": 20.56,
+      "projectManager": "Leoine Datte"
+    },
+    {
+      "id": "60856fcc2765570ee4ad7a16",
+      "name": "Kuphal and Sons",
+      "startDate": "2020-09-07T02:35:44Z",
+      "endDate": "2026-06-19T07:42:04Z",
+      "estimatedDurationInDays": 12,
+      "estimatedCost": 979224,
+      "annualInterestRateOffered": 6.26,
+      "projectManager": "Mirna Francis"
+    },
+    {
+      "id": "60856fd82765570ee4ad7a17",
+      "name": "Wintheiser, Considine and Kling",
+      "startDate": "2020-08-24T17:39:54Z",
+      "endDate": "2025-04-09T04:46:47Z",
+      "estimatedDurationInDays": 87,
+      "estimatedCost": 233254,
+      "annualInterestRateOffered": 29.54,
+      "projectManager": "Alexandros Northage"
+    },
+    {
+      "id": "60859eaa5064151716189fd4",
+      "name": "World's Greatest Project",
+      "startDate": "2020-11-01T03:24:06Z",
+      "endDate": "2022-12-03T02:30:28Z",
+      "estimatedDurationInDays": 73,
+      "estimatedCost": 5000000,
+      "annualInterestRateOffered": 10,
+      "projectManager": "Frank Miser"
+    },
+    {
+      "id": "6085a36d38053fddbaeeaf92",
+      "name": "Brum Superdome",
+      "startDate": "2021-01-12T03:00:23Z",
+      "endDate": "2022-11-15T05:16:53Z",
+      "estimatedDurationInDays": 9,
+      "estimatedCost": 960666,
+      "annualInterestRateOffered": 16.52,
+      "projectManager": "Daryn Allwright"
+    },
+    {
+      "id": "60869951b617038680529958",
+      "name": "Alpaca Apartments",
+      "startDate": "2021-10-12T03:00:23Z",
+      "endDate": "2025-11-15T05:16:53Z",
+      "estimatedDurationInDays": 365,
+      "estimatedCost": 1000000,
+      "annualInterestRateOffered": 10.00,
+      "projectManager": "Frank Phillips"
+    },
+    {
+      "id": "6086a311c65719f747ecfd07",
+      "name": "Memorial Apartments",
+      "startDate": "2021-11-12T03:00:23Z",
+      "endDate": "2026-10-15T05:16:53Z",
+      "estimatedDurationInDays": 365,
+      "estimatedCost": 6600000,
+      "annualInterestRateOffered": 16.00,
+      "projectManager": "Anne Frank"
+    },
+    {
+      "id": "608982f6b85ab5df2e9ee277",
+      "name": "Kirlin, Schulist and Altenwerth",
+      "startDate": "2020-11-01T17:14:43Z",
+      "endDate": "2029-12-16T14:59:01Z",
+      "estimatedDurationInDays": 22,
+      "estimatedCost": 3000000.0,
+      "annualInterestRateOffered": 15.0,
+      "projectManager": "Leoine Datte"
+    },
+    {
+      "id": "6089834926361f449490e4df",
+      "name": "Kirlin, Schulist and Altenwerth",
+      "startDate": "2020-11-01T17:14:43Z",
+      "endDate": "2029-12-16T14:59:01Z",
+      "estimatedDurationInDays": 22,
+      "estimatedCost": 3000000.0,
+      "annualInterestRateOffered": 15.0,
+      "projectManager": "Leoine Datte"
+    },
+    {
+      "id": "608983da47541e8f987707fb",
+      "name": "Shirley Village",
+      "startDate": "2022-11-01T17:14:43Z",
+      "endDate": "2030-12-16T14:59:01Z",
+      "estimatedDurationInDays": 223,
+      "estimatedCost": 4000000.0,
+      "annualInterestRateOffered": 10.0,
+      "projectManager": "Smith Delta"
+    }
+  ]

@@ -32,3 +32,5 @@ You can check out their examples at,
 - http://localhost:3000/login
 
 Not connected the frontend to the service yet!!!
+## Dummy data
+There's some dummy data in data.json
