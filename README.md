@@ -1,6 +1,14 @@
 # property-invest-ui
 ## Database
-Local mongodb runs on local pc at default location, localhost:27017
+Local mongodb runs on local pc at default location, localhost:27017  
+Add docker host (172.17.0.1) to mongodb,
+```
+bind_ip = 127.0.0.1,172.17.0.1
+```
+This IP is also in DatabaseService Dockerfile,
+```
+ENV MONGODBSETTINGS__HOST="172.17.0.1"
+```
 
 ## Database service
 
