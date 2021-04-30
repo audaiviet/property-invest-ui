@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseService.Entities
 {
+    [BsonIgnoreExtraElements] 
     public class Project : IProject
     {
         [BsonId]
