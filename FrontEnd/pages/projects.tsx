@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from '../assets/jss/nextjs-material-kit/pages/index';
+import styles from '../assets/jss/nextjs-material-kit/pages/projects';
 import { makeStyles } from '@material-ui/core';
 import Parallax from '../components/Parallax/Parallax';
 import GridContainer from '../components/Grid/GridContainer';
@@ -37,6 +37,7 @@ export async function getStaticProps(context) {
 
 function Projects({ projects }: Props) {
     const classes = useStyles();
+    console.log("****Projects= ", projects)
 
     return (
         <React.Fragment>
