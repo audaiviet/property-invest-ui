@@ -18,5 +18,5 @@ RUN dotnet publish "DatabaseService.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV MONGODBSETTINGS__HOST="172.17.0.1"
+ENV MONGODBSETTINGS__HOST="host.docker.internal"
 ENTRYPOINT ["dotnet", "DatabaseService.dll", "--environment=Development"]
