@@ -1,24 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from '../assets/jss/nextjs-material-kit/pages/projects';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import Parallax from '../components/Parallax/Parallax';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
-import ProjectCard from '../components/ProjectCard/ProjectCard';
-
-
-interface IProject {
-    id: string,
-    name: string,
-    startDate: Date,
-    endDate: Date,
-    estimatedDurationInDays: number,
-    estimatedCost: number,
-    annualInterestRateOffered: number,
-    projectManager: string
-}
-
+import { ProjectCard } from '../components/ProjectCard/ProjectCard';
+import { IProject } from 'interfaces/IProject';
 interface Props {
     projects: IProject[]
 }
@@ -38,11 +26,10 @@ export async function getStaticProps(context) {
 
 function Projects({ projects }: Props) {
     const classes = useStyles();
-    console.log("****Projects= ", projects)
 
     return (
         <React.Fragment>
-            <Parallax small image={require('assets/img/new-york.jpg')}>
+            <Parallax image={require('assets/img/new-york.jpg')}>
                 <div className={classes.container}>
                     <GridContainer>
                         <GridItem>
@@ -59,12 +46,11 @@ function Projects({ projects }: Props) {
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div className={classes.sections}>
                     <div className={classes.container}>
-                        <h1>Projects to invest in</h1>
+                        <h1 className={classes.title}>Projects to invest in</h1>
                         <hr />
                         {projects && projects.map((item, index) => {
                             return (<div key={item.id}>
-                                <h3>{item.name}</h3>
-                                <ProjectCard/>
+                                <ProjectCard project={item} />
                             </div>)
                         })}
                     </div>
