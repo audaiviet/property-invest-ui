@@ -1,6 +1,6 @@
-import GridContainer from '../Grid/GridContainer';
+import GridContainer from '@components/Grid/GridContainer';
 import React from 'react';
-import { ProjectCard } from '../ProjectCard/ProjectCard';
+import { ProjectCard } from '@components/ProjectCard/ProjectCard';
 import { IProject } from 'interfaces/IProject';
 import { makeStyles } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";

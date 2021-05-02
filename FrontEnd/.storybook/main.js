@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   "stories": [
     "../components/**/*.stories.@(js|jsx|ts|tsx)"
@@ -8,5 +10,12 @@ module.exports = {
   ],
   "core": {
     "builder": "webpack5"
-  }
+  },
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+       ...config.resolve.alias,
+       "@components": path.resolve(__dirname, "../components")
+     }
+     return config;
+   }
 }
