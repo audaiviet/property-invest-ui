@@ -42,7 +42,7 @@ export function ProjectCard({project} : {project: IProject}) {
         <Button size="small" color="primary">
           Invest
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" href={`/projects/${project.id}`}>
           Learn More
         </Button>
       </CardActions>

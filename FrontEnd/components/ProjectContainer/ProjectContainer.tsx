@@ -16,7 +16,7 @@ export function ProjectContainer(props: { projects: IProject[]; }) {
         <GridContainer className={classes.container}>
             {projects.map((item, index) => {
                 return (
-                <Grid className={classes.item} xs={12} sm={4}>
+                <Grid item key={item.id} className={classes.item} xs={12} sm={4}>
                     <ProjectCard project={item}></ProjectCard>
                 </Grid>);
             })}

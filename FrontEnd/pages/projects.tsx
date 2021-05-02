@@ -5,8 +5,8 @@ import { makeStyles, Typography } from '@material-ui/core';
 import Parallax from '../components/Parallax/Parallax';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
-import { ProjectCard } from '../components/ProjectCard/ProjectCard';
 import { IProject } from 'interfaces/IProject';
+import { ProjectContainer } from '@components/ProjectContainer/ProjectContainer';
 interface Props {
     projects: IProject[]
 }
@@ -48,11 +48,7 @@ function Projects({ projects }: Props) {
                     <div className={classes.container}>
                         <h1 className={classes.title}>Projects to invest in</h1>
                         <hr />
-                        {projects && projects.map((item, index) => {
-                            return (<div key={item.id}>
-                                <ProjectCard project={item} />
-                            </div>)
-                        })}
+                        <ProjectContainer projects={projects}></ProjectContainer>
                     </div>
                 </div>
             </div>
