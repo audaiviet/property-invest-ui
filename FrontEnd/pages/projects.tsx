@@ -7,38 +7,30 @@ import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import { IProject } from 'interfaces/IProject';
 import { ProjectContainer } from '@components/ProjectContainer/ProjectContainer';
-import projectsData from 'test-data/projects'
-import { resolve } from 'node:path';
+import { getTestProjectsData, useProjects } from 'services/ProjectService';
+import { QueryClient, useQuery } from 'react-query';
+import { dehydrate } from 'react-query/hydration';
 interface Props {
     projects: IProject[]
 }
 
 const useStyles = makeStyles(styles);
 
-async function getProjectsData(): Promise<IProject[]> {
-    const res = await fetch(process.env.PROJECTS_SERVICE);
-    if (!res.ok) {
-        throw new Error('Network response was not ok')
-    }
-    return res.json();
-}
-
-async function getTestProjectsData(): Promise<IProject[]> {
-    return new Promise((resolve, reject) => resolve(projectsData));
-}
-
 export async function getStaticProps(context) {
-    const projects: IProject[] = await getTestProjectsData();
-
+    const queryClient = new QueryClient()
+    await queryClient.prefetchQuery('projects', getTestProjectsData)
+ 
     return {
-        props: {
-            projects: projects || []
-        }
+ 
+      props: {
+        dehydratedState: dehydrate(queryClient),
+      },
     }
 }
 
-function Projects({ projects }: Props) {
+function Projects() {
     const classes = useStyles();
+    const { data: projects, status } = useProjects()
 
     return (
         <React.Fragment>

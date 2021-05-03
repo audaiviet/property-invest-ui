@@ -49,6 +49,7 @@
     "react": "^17.0.1",
     "react-datetime": "2.16.3",
     "react-dom": "^17.0.1",
+    "react-query": "^3.15.2",
     "react-slick": "^0.28.1",
     "react-swipeable-views": "0.13.9",
     "sass": "^1.32.11",

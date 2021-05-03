@@ -17,7 +17,6 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
 
@@ -26,6 +25,10 @@ import PageChange from "components/PageChange/PageChange.js";
 import "assets/scss/nextjs-material-kit.scss?v=1.1.0";
 import Header from "../components/Header/Header";
 import HeaderLinks from "../components/Header/HeaderLinks";
+import { AppProps } from 'next/dist/next-server/lib/router/router';
+
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { Hydrate } from 'react-query/hydration'
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -44,42 +47,38 @@ Router.events.on("routeChangeError", () => {
   document.body.classList.remove("body-page-transition");
 });
 
-export default class MyApp extends App {
-  // static async getInitialProps({ Component, router, ctx }) {
-  //   let pageProps = {};
-
-  //   if (Component.getInitialProps) {
-  //     pageProps = await Component.getInitialProps(ctx);
-  //   }
-
-  //   return { pageProps };
-  // }
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
-      <React.Fragment>
-        <Head>
-          <meta charSet="utf-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
-          <meta name="theme-color" content="#000000" />
-          <title>Property investment for you</title>
-        </Head>
-        <Header
-          color="transparent"
-          brand="Property Invest"
-          rightLinks={<HeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: "white",
-          }}
-        />
-        <Component {...pageProps} />
-      </React.Fragment>
-    );
+export default function App({ Component, pageProps }: AppProps) {
+  const queryClientRef = React.useRef<QueryClient>()
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient()
   }
+
+  return (
+    <QueryClientProvider client={queryClientRef.current}>
+      <Hydrate state={pageProps.dehydratedState}>
+        <React.Fragment>
+          <Head>
+            <meta charSet="utf-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            />
+            <meta name="theme-color" content="#000000" />
+            <title>Property investment for you</title>
+          </Head>
+          <Header
+            color="transparent"
+            brand="Property Invest"
+            rightLinks={<HeaderLinks />}
+            fixed
+            changeColorOnScroll={{
+              height: 400,
+              color: "white",
+            }}
+          />
+          <Component {...pageProps} />
+        </React.Fragment>
+      </Hydrate>
+    </QueryClientProvider>
+  );
 }
