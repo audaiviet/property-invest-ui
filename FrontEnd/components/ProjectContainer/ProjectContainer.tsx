@@ -11,7 +11,9 @@ const useStyles = makeStyles(styles);
 export function ProjectContainer(props: { projects: IProject[]; }) {
     const classes = useStyles();
 
-    const { projects }:{ projects: IProject[] }  = props;
+    let { projects }:{ projects: IProject[] }  = props;
+    projects = projects||[];
+
     return (<>
         <GridContainer className={classes.container}>
             {projects.map((item, index) => {
