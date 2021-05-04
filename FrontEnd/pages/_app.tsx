@@ -29,6 +29,7 @@ import { AppProps } from 'next/dist/next-server/lib/router/router';
 
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Hydrate } from 'react-query/hydration'
+import Footer from '@components/Footer/Footer';
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -77,6 +78,7 @@ export default function App({ Component, pageProps }: AppProps) {
             }}
           />
           <Component {...pageProps} />
+          <Footer />
         </React.Fragment>
       </Hydrate>
     </QueryClientProvider>

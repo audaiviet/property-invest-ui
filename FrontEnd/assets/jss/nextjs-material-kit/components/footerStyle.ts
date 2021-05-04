@@ -1,6 +1,29 @@
-import { container, primaryColor } from "assets/jss/nextjs-material-kit.js";
+import { container, defaultFont, primaryColor, title } from "assets/jss/nextjs-material-kit.js";
 
-const footerStyle = {
+const footerStyle: any = {
+  title: {
+    ...title,
+    marginTop: "30px",
+    minHeight: "32px",
+    textDecoration: "none",
+    color: "#FFFFFF",
+    fontSize: '20px',
+    fontWeight: '500'
+  },
+  links: {
+    ...defaultFont,
+    textDecoration: "none",
+    fontSize: '17px',
+    fontWeight: '400',
+    display: 'block',
+    color: '#FFFFFF'
+  },
+  typo: {
+    paddingLeft: "25%",
+    marginBottom: "40px",
+    position: "relative",
+    width: "100%"
+  },
   block: {
     color: "inherit",
     padding: "0.9375rem",
@@ -17,16 +40,17 @@ const footerStyle = {
     display: "block"
   },
   right: {
-    padding: "15px 0",
     margin: "0",
     float: "right!important"
   },
   footer: {
     padding: "0.9375rem 0",
-    textAlign: "center",
+    textAlign: "left",
     display: "flex",
     zIndex: "2",
-    position: "relative"
+    position: "relative",
+    backgroundColor: '#666666',
+    flexDirection: 'column'
   },
   a: {
     color: primaryColor,
@@ -54,6 +78,12 @@ const footerStyle = {
     height: "18px",
     position: "relative",
     top: "3px"
+  },
+  noLeftPadding: {
+    "paddingLeft": '0'
+  },
+  noRightPadding: {
+    "paddingRight": '0.5rem'
   }
 };
 export default footerStyle;

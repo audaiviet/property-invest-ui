@@ -42,3 +42,9 @@ You can check out their examples at,
 Not connected the frontend to the service yet!!!
 ## Dummy data
 There's some dummy data in dummy-data.json
+
+# Useful websites
+[www.crowdproperty.com](https://www.crowdproperty.com/)
+[www.invisionapp.com](https://www.invisionapp.com/)
+[www.swift.com](https://www.swift.com/)
+[www.sweek.com](https://sweek.com)

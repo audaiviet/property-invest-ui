@@ -8,7 +8,6 @@ import Camera from "@material-ui/icons/Camera";
 import Palette from "@material-ui/icons/Palette";
 import Favorite from "@material-ui/icons/Favorite";
 // core components
-import Footer from "components/Footer/Footer.js";
 import Button from "components/CustomButtons/Button.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -195,7 +194,6 @@ export default function ProfilePage(props) {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

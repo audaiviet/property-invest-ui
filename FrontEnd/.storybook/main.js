@@ -14,6 +14,7 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
        ...config.resolve.alias,
+       "assets": path.resolve(__dirname, "../assets"),
        "@components": path.resolve(__dirname, "../components")
      }
      return config;
