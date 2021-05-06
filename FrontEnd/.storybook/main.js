@@ -6,17 +6,24 @@ module.exports = {
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    'storybook-addon-material-ui',
   ],
   "core": {
     "builder": "webpack5"
   },
   webpackFinal: async (config, { configType }) => {
+    if (!config.resolve) config.resolve = {};
+    config.resolve.modules = [
+      ...(config.resolve.modules || []),
+      path.resolve(__dirname, ".."),
+      "node_modules"
+    ],
     config.resolve.alias = {
        ...config.resolve.alias,
-       "assets": path.resolve(__dirname, "../assets"),
        "@components": path.resolve(__dirname, "../components")
      }
+
      return config;
    }
 }
