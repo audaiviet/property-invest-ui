@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router'
 import { Grid, makeStyles, Typography } from '@material-ui/core';
-import { getTestProjectsData, useProjects } from 'services/ProjectService';
+import { useProjects } from 'services/ProjectService';
 import { IProject } from 'interfaces/IProject';
 import Carousel from '@components/Carousel/Carousel';
-import { useQuery } from 'react-query';
+import { SectionTitle } from '@components/SectionTitle/SectionTitle';
 
 const useStyles = makeStyles({
     banner: {
@@ -27,20 +27,26 @@ const useStyles = makeStyles({
     },
     details: {
         height: '600px',
-        "backgroundColor": "#F1948A"
+        backgroundColor: "#F1948A"
     },
     background: {
         height: '600px',
-        "backgroundColor": "#EDBB99"
-    },
-    sections: {
-        padding: "70px 0"
+        backgroundColor: "#EDBB99"
     },
     visuals: {
-        "backgroundColor": "#FFFFFF"
+        backgroundColor: "#FFFFFF",
+        minHeight: '600px',
     },
     titleBox: {
         marginLeft: "50px"
+    },
+    financials: {
+        backgroundColor: "#ffffcc",
+        height: '600px',
+    },
+    invest: {
+        backgroundColor: "#ccffff",
+        height: '600px',
     }
 
 })
@@ -63,16 +69,18 @@ function Project(props) {
                 </Typography>
             </div>
         </section>
+        <section className={classes.background}>
+            <SectionTitle title='Background information'></SectionTitle>
+        </section>
         <section className={classes.visuals}>
+            <SectionTitle title='Project photos'></SectionTitle>
             <Carousel images={project && project.images}></Carousel>
         </section>
-        <Grid container className={classes.details}>
-            <h1>I am project numer {id}</h1>
-        </Grid>
-        <section className={classes.background}>
-            <pre>
-                {project && JSON.stringify(project)}
-            </pre>
+        <section className={classes.financials}>
+            <SectionTitle title='Financials'></SectionTitle>
+        </section>
+        <section className={classes.invest}>
+            <SectionTitle title='Your investment otions'></SectionTitle>
         </section>
     </>);
 }
