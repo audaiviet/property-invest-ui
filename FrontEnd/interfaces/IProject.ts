@@ -8,4 +8,5 @@ export interface IProject {
     annualInterestRateOffered: number,
     projectManager: string,
     description: string,
+    images: string[],
 }

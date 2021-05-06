@@ -64,7 +64,7 @@ function Project(props) {
             </div>
         </section>
         <section className={classes.visuals}>
-            <Carousel></Carousel>
+            <Carousel images={project && project.images}></Carousel>
         </section>
         <Grid container className={classes.details}>
             <h1>I am project numer {id}</h1>

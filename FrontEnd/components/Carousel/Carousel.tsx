@@ -1,20 +1,17 @@
 import React from "react";
 // react component for creating beautiful carousel
 import SlickSlider from "react-slick";
-// @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-// @material-ui/icons
-// core components
 import GridContainer from "@components/Grid/GridContainer.js";
 import Card from "@components/Card/Card.js";
 
-const images: string[] = ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg7.jpg']
 import styles from "assets/jss/nextjs-material-kit/components/carouselStyle";
 import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles(styles);
 
-export default function Carousel() {
+export default function Carousel({images}) {
+  images = images||[];
   const classes = useStyles();
   const settings = {
     dots: true,
