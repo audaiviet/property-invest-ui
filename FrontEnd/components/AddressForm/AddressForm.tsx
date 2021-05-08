@@ -39,8 +39,10 @@ function RhfInput(props: IRhfInput) {
         "autoComplete=", autoComplete)
     return (
         <Controller
-            render={({ field }) => (
+            render={({ field, fieldState: {error} }) => (
                 <TextField {...field}
+                    error={!!error}
+                    helperText={error ? error.message : null}
                     required={isRequired}
                     label={label}
                     fullWidth={fullWidth}
@@ -49,7 +51,7 @@ function RhfInput(props: IRhfInput) {
             )}
             name={name}
             control={control}
-            rules={{ required: isRequired }}
+            rules={{ required: "Field is required" }}
             defaultValue={defaultValue}
         />);
 }
