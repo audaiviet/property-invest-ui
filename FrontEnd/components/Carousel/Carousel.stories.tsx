@@ -7,4 +7,6 @@ export default {
   component: Carousel
 } as Meta;
 
-export const Standard = () => <Carousel/>
+const images = ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',];
+
+export const Standard = () => <Carousel images={images}/>

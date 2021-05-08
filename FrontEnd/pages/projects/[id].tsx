@@ -5,6 +5,7 @@ import { useProjects } from 'services/ProjectService';
 import { IProject } from 'interfaces/IProject';
 import Carousel from '@components/Carousel/Carousel';
 import { SectionTitle } from '@components/SectionTitle/SectionTitle';
+import { AddressForm } from '@components/AddressForm/AddressForm';
 
 const useStyles = makeStyles({
     banner: {
@@ -81,6 +82,7 @@ function Project(props) {
         </section>
         <section className={classes.invest}>
             <SectionTitle title='Your investment otions'></SectionTitle>
+            <AddressForm></AddressForm>
         </section>
     </>);
 }
