@@ -6,6 +6,7 @@ import { IProject } from 'interfaces/IProject';
 import Carousel from '@components/Carousel/Carousel';
 import { SectionTitle } from '@components/SectionTitle/SectionTitle';
 import { AddressForm } from '@components/AddressForm/AddressForm';
+import { BoxButton } from '@components/BoxButton/BoxButton';
 
 const useStyles = makeStyles({
     banner: {
@@ -52,7 +53,19 @@ const useStyles = makeStyles({
 
 })
 
-function Project(props) {
+function InvestmentOption({ text }) {
+    return (
+        <Grid container justify='center'>
+            <Grid item>
+                <BoxButton>
+                    <h3>{text}</h3>
+                </BoxButton>
+            </Grid>
+        </Grid>
+    )
+}
+
+export default function Project(props) {
     const router = useRouter()
     const { id } = router.query
     const classes = useStyles();
@@ -82,9 +95,18 @@ function Project(props) {
         </section>
         <section className={classes.invest}>
             <SectionTitle title='Your investment otions'></SectionTitle>
+            <Grid container direction="row" justify="center">
+                <Grid item xs={12} sm={4}>
+                    <InvestmentOption text='£1000 at 8%'></InvestmentOption>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <InvestmentOption text='£5000 at 8%'></InvestmentOption>
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                    <InvestmentOption text='£10000 at 8%'></InvestmentOption>
+                </Grid>
+            </Grid>
             <AddressForm></AddressForm>
         </section>
     </>);
 }
-
-export default Project;
