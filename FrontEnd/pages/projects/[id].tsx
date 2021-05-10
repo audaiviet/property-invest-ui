@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRouter } from 'next/router'
+import { Router, useRouter } from 'next/router'
 import { Grid, makeStyles, Typography } from '@material-ui/core';
 import { useProjects } from 'services/ProjectService';
 import { IProject } from 'interfaces/IProject';
@@ -7,6 +7,7 @@ import Carousel from '@components/Carousel/Carousel';
 import { SectionTitle } from '@components/SectionTitle/SectionTitle';
 import { AddressForm } from '@components/AddressForm/AddressForm';
 import { BoxButton } from '@components/BoxButton/BoxButton';
+import { Banner } from '@components/Banner/Banner';
 
 const useStyles = makeStyles({
     banner: {
@@ -54,10 +55,11 @@ const useStyles = makeStyles({
 })
 
 function InvestmentOption({ text }) {
+    const router = useRouter()
     return (
         <Grid container justify='center'>
             <Grid item>
-                <BoxButton height='100px'>
+                <BoxButton height='100px' onClickHandler={() => {router.push("/payment");}}>
                     <h3>{text}</h3>
                 </BoxButton>
             </Grid>
@@ -73,16 +75,7 @@ export default function Project(props) {
     const projects = data || [];
     const project: IProject = projects.find((item, index) => item.id === id)
     return (<>
-        <section className={classes.banner}>
-            <div className={classes.titleBox}>
-                <Typography gutterBottom variant="h5" component="h1" className={classes.title}>
-                    Project details
-                </Typography>
-                <Typography gutterBottom variant="h5" component="h2" className={classes.subtitle}>
-                    For project {project && project.name}
-                </Typography>
-            </div>
-        </section>
+        <Banner title='Project details' subtitle={`For project ${project && project.name}`} />
         <section className={classes.background}>
             <SectionTitle title='Background information'></SectionTitle>
         </section>

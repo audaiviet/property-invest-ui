@@ -65,7 +65,7 @@ export function AddressForm() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Shipping address
+                Your address
             </Typography>
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={3}>
