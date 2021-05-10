@@ -11,7 +11,7 @@ import { BoxButton } from '@components/BoxButton/BoxButton';
 const useStyles = makeStyles({
     banner: {
         backgroundImage: "url('/static/images/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg')",
-        height: '400px',
+        height: '450px',
         display: 'flex',
         alignItems: 'center'
     },
@@ -57,7 +57,7 @@ function InvestmentOption({ text }) {
     return (
         <Grid container justify='center'>
             <Grid item>
-                <BoxButton>
+                <BoxButton height='100px'>
                     <h3>{text}</h3>
                 </BoxButton>
             </Grid>
