@@ -13,6 +13,10 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 345,
     borderRadius: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+
   },
 });
 

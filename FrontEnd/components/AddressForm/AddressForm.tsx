@@ -70,13 +70,11 @@ export function AddressForm() {
                 </Typography>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        {RhfInput({
-                            name: "firstName",
-                            control: control,
-                            label: "First name",
-                            fullWidth: true,
-                            autoComplete: "given-name"
-                        })}
+                        <RhfInput name= "firstName"
+                            control= {control}
+                            label= "First name"
+                            fullWidth= {true}
+                            autoComplete= "given-name"/>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         {RhfInput({

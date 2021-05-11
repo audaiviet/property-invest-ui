@@ -3,11 +3,12 @@ import { container } from "../../nextjs-material-kit";
 const projectContainerStyle: any = {
     container: {
         ...container,
-        "flexWrap": "wrap",
-        "justifyContent": "flex-start"
+        flexWrap: "wrap",
+        justifyContent: "flex-start",
     },
     item: {
-        "marginBottom": "2rem"
+        "marginBottom": "2rem",
+        display: 'flex',
     },
 }
 

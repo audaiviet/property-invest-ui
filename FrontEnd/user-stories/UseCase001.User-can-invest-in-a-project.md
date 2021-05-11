@@ -1,4 +1,4 @@
-# Use Case: 1 User can invest in a project
+# Use Case: 001 User can invest in a project
 --------------------------------------------------
 ## CHARACTERISTIC INFORMATION
 GOAL IN CONTEXT:  
