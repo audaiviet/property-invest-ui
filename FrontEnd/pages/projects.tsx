@@ -8,7 +8,7 @@ import GridItem from '../components/Grid/GridItem';
 import { IProject } from 'interfaces/IProject';
 import { ProjectContainer } from '@components/ProjectContainer/ProjectContainer';
 import { getTestProjectsData, useProjects } from 'services/ProjectService';
-import { QueryClient, useQuery } from 'react-query';
+import { QueryClient } from 'react-query';
 import { dehydrate } from 'react-query/hydration';
 interface Props {
     projects: IProject[]
