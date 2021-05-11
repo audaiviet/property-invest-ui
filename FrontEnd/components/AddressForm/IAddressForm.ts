@@ -8,4 +8,8 @@ export interface IAddressForm {
     saveAddress: boolean,
     state: string,
     zip: string,
+    nameOnCard: string,
+    cardNumber: string,
+    expiryDate: string,
+    securityCode: string,
 }

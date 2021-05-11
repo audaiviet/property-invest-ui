@@ -1,37 +1,14 @@
 import React from 'react';
-import { Router, useRouter } from 'next/router'
-import { Grid, makeStyles, Typography } from '@material-ui/core';
+import { useRouter } from 'next/router'
+import { Grid, makeStyles } from '@material-ui/core';
 import { useProjects } from 'services/ProjectService';
 import { IProject } from 'interfaces/IProject';
 import Carousel from '@components/Carousel/Carousel';
 import { SectionTitle } from '@components/SectionTitle/SectionTitle';
-import { AddressForm } from '@components/AddressForm/AddressForm';
 import { BoxButton } from '@components/BoxButton/BoxButton';
 import { Banner } from '@components/Banner/Banner';
 
 const useStyles = makeStyles({
-    banner: {
-        backgroundImage: "url('/static/images/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg')",
-        height: '450px',
-        display: 'flex',
-        alignItems: 'center'
-    },
-    title: {
-        fontSize: "4.2rem",
-        fontWeight: "600",
-        display: "inline-block",
-        position: "relative",
-        marginBottom: "0"
-    },
-    subtitle: {
-        fontSize: "1.313rem",
-        maxWidth: "510px",
-        margin: "0 0 0"
-    },
-    details: {
-        height: '600px',
-        backgroundColor: "#F1948A"
-    },
     background: {
         height: '600px',
         backgroundColor: "#EDBB99"
@@ -39,9 +16,6 @@ const useStyles = makeStyles({
     visuals: {
         backgroundColor: "#FFFFFF",
         minHeight: '600px',
-    },
-    titleBox: {
-        marginLeft: "50px"
     },
     financials: {
         backgroundColor: "#ffffcc",
@@ -99,7 +73,6 @@ export default function Project(props) {
                     <InvestmentOption text='£10000 at 8%'></InvestmentOption>
                 </Grid>
             </Grid>
-            <AddressForm></AddressForm>
         </section>
     </>);
 }

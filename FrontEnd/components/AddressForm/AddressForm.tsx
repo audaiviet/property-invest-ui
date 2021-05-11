@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Control, Controller, useForm } from 'react-hook-form';
-import { Button } from '@material-ui/core';
+import { Button, Divider } from '@material-ui/core';
 import { saveAddress } from 'services/UserService';
 import { IAddressForm } from './IAddressForm';
 
@@ -17,7 +17,7 @@ interface IRhfInput {
     isRequired?: boolean,
     fullWidth?: boolean,
     control: Control<IAddressForm>,
-    autoComplete?: string
+    autoComplete?: string,
 }
 
 function RhfInput(props: IRhfInput) {
@@ -39,7 +39,7 @@ function RhfInput(props: IRhfInput) {
         "autoComplete=", autoComplete)
     return (
         <Controller
-            render={({ field, fieldState: {error} }) => (
+            render={({ field, fieldState: { error } }) => (
                 <TextField {...field}
                     error={!!error}
                     helperText={error ? error.message : null}
@@ -64,10 +64,10 @@ export function AddressForm() {
 
     return (
         <React.Fragment>
-            <Typography variant="h6" gutterBottom>
-                Your address
-            </Typography>
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
+                <Typography variant="h6" gutterBottom>
+                    Your address
+                </Typography>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         {RhfInput({
@@ -146,13 +146,91 @@ export function AddressForm() {
                         <Controller
                             control={control}
                             name="saveAddress"
-                            defaultValue='no'
+                            defaultValue={false}
                             render={({ field: { value, onChange } }) => (
                                 // Checkbox accepts its value as `checked`
                                 // so we need to connect the props here
                                 <FormControlLabel
                                     control={<Checkbox color="secondary" checked={value} onChange={onChange} />}
                                     label="Use this address for payment details"
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Divider />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant="h6" gutterBottom>
+                            Your card details
+                        </Typography>
+                        <Controller
+                            control={control}
+                            name="nameOnCard"
+                            defaultValue=""
+                            rules={{ required: 'Please enter your name as printed on your card.' }}
+                            render={({ field, fieldState: { error } }) => (
+                                <TextField {...field}
+                                    error={!!error}
+                                    helperText={error ? error.message : null}
+                                    required
+                                    label='Name on card'
+                                    fullWidth
+                                    autoComplete='cc-name'
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Controller
+                            control={control}
+                            name="cardNumber"
+                            defaultValue=""
+                            rules={{ required: 'Your card number is required.' }}
+                            render={({ field, fieldState: { error } }) => (
+                                <TextField {...field}
+                                    error={!!error}
+                                    helperText={error ? error.message : null}
+                                    required
+                                    label='Card number'
+                                    fullWidth
+                                    autoComplete='cc-number'
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Controller
+                            control={control}
+                            name="expiryDate"
+                            defaultValue=""
+                            rules={{ required: 'Your card expiry date is required.' }}
+                            render={({ field, fieldState: { error } }) => (
+                                <TextField {...field}
+                                    error={!!error}
+                                    helperText={error ? error.message : null}
+                                    required
+                                    label='Expiry date'
+                                    fullWidth
+                                    autoComplete='cc-exp'
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <Controller
+                            control={control}
+                            name="securityCode"
+                            defaultValue=""
+                            rules={{ required: 'Your card security code is required.' }}
+                            render={({ field, fieldState: { error } }) => (
+                                <TextField {...field}
+                                    error={!!error}
+                                    helperText={error ? error.message : null}
+                                    required
+                                    label='Security code/CVC'
+                                    fullWidth
+                                    autoComplete='cc-csc'
                                 />
                             )}
                         />

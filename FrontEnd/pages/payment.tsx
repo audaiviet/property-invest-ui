@@ -7,7 +7,7 @@ import * as React from 'react';
 
 const useStyles = makeStyles({
     background: {
-        height: '600px',
+        minHeight: '600px',
         backgroundColor: "#EDBB99"
     },
 
@@ -20,7 +20,7 @@ export default function Payment(props) {
         <section className={classes.background}>
             <SectionTitle title='Payment information'></SectionTitle>
             <Grid container justify='center'>
-                <Grid item xs={11}>
+                <Grid item xs={11} sm={6}>
                     <AddressForm></AddressForm>
                 </Grid>
             </Grid>
