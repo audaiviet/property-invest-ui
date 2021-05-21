@@ -31,6 +31,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Hydrate } from 'react-query/hydration'
 import Footer from '@components/Footer/Footer';
 
+import { Provider } from 'next-auth/client'
+
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
   document.body.classList.add("body-page-transition");
@@ -55,32 +57,34 @@ export default function App({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <QueryClientProvider client={queryClientRef.current}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <React.Fragment>
-          <Head>
-            <meta charSet="utf-8" />
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    <Provider session={pageProps.session}>
+      <QueryClientProvider client={queryClientRef.current}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <React.Fragment>
+            <Head>
+              <meta charSet="utf-8" />
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1, shrink-to-fit=no"
+              />
+              <meta name="theme-color" content="#000000" />
+              <title>Property investment for you</title>
+            </Head>
+            <Header
+              color="transparent"
+              brand="Property Invest"
+              rightLinks={<HeaderLinks />}
+              fixed
+              changeColorOnScroll={{
+                height: 400,
+                color: "white",
+              }}
             />
-            <meta name="theme-color" content="#000000" />
-            <title>Property investment for you</title>
-          </Head>
-          <Header
-            color="transparent"
-            brand="Property Invest"
-            rightLinks={<HeaderLinks />}
-            fixed
-            changeColorOnScroll={{
-              height: 400,
-              color: "white",
-            }}
-          />
-          <Component {...pageProps} />
-          <Footer />
-        </React.Fragment>
-      </Hydrate>
-    </QueryClientProvider>
+            <Component {...pageProps} />
+            <Footer />
+          </React.Fragment>
+        </Hydrate>
+      </QueryClientProvider>
+    </Provider>
   );
 }

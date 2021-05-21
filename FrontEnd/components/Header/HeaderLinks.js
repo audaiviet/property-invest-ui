@@ -13,17 +13,22 @@ import { Apps, CloudDownload } from "@material-ui/icons";
 import HomeWorkIcon from "@material-ui/icons/HomeWork";
 import DeleteIcon from "@material-ui/icons/Delete";
 import IconButton from "@material-ui/core/IconButton";
-
+import InputIcon from "@material-ui/icons/Input";
+import MotorcycleIcon from "@material-ui/icons/Motorcycle";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/nextjs-material-kit/components/headerLinksStyle.js";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
   const classes = useStyles();
+  const [session, loading] = useSession();
+
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
@@ -70,6 +75,40 @@ export default function HeaderLinks(props) {
         >
           <CloudDownload className={classes.icons} /> Download
         </Button>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        {session && (
+          <Button
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+            onClick={signOut}
+          >
+            <MotorcycleIcon className={classes.icons} /> Sign Out
+          </Button>
+        )}
+        {!session && (
+          <Button
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+            onClick={() => signIn("okta")}
+          >
+            <InputIcon className={classes.icons} /> Sign In
+          </Button>
+        )}
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        {session && (
+          <Button
+            href="/user"
+            color="transparent"
+            target="_blank"
+            className={classes.navLink}
+          >
+            <AccountCircleIcon className={classes.icons} /> Account
+          </Button>
+        )}
       </ListItem>
       <ListItem className={classes.listItem}>
         {/*<Tooltip title="Delete">

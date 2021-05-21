@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     },
     invest: {
         backgroundColor: "#ccffff",
-        height: '600px',
+        paddingBottom: "2rem",
     }
 
 })

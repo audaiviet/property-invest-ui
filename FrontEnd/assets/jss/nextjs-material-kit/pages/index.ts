@@ -37,6 +37,9 @@ const componentsStyle: any = {
   },
   textCenter: {
     textAlign: "center"
+  },
+  projectSection: {
+    minHeight: "600px"
   }
 };
 

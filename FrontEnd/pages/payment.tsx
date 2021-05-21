@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import * as React from 'react';
 
 const useStyles = makeStyles({
-    background: {
+    payment: {
         minHeight: '600px',
         backgroundColor: "#EDBB99"
     },
@@ -17,7 +17,7 @@ export default function Payment(props) {
     return (<>
         <Banner title='Payment transfer' subtitle='Fund your investments here'
             imageUrl='/static/images/didier-weemaels-ZKVBM2_Dp84-unsplash.jpg' />
-        <section className={classes.background}>
+        <section className={classes.payment}>
             <SectionTitle title='Payment information'></SectionTitle>
             <Grid container justify='center'>
                 <Grid item xs={11} sm={6}>
