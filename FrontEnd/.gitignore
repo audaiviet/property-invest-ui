@@ -30,3 +30,6 @@ yarn-error.log*
 # package
 /dist
 /.next
+
+# test data
+/public/uploads

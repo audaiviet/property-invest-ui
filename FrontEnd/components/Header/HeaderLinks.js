@@ -16,6 +16,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InputIcon from "@material-ui/icons/Input";
 import MotorcycleIcon from "@material-ui/icons/Motorcycle";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
@@ -109,6 +110,23 @@ export default function HeaderLinks(props) {
             <AccountCircleIcon className={classes.icons} /> Account
           </Button>
         )}
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <CustomDropdown
+          noLiPadding
+          navDropdown
+          buttonText="Admin"
+          buttonProps={{
+            className: classes.navLink,
+            color: "transparent",
+          }}
+          buttonIcon={SupervisorAccountIcon}
+          dropdownList={[
+            <Link href="/projects/create">
+              <a className={classes.dropdownLink}>Add a project</a>
+            </Link>,
+          ]}
+        />
       </ListItem>
       <ListItem className={classes.listItem}>
         {/*<Tooltip title="Delete">
