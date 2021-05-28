@@ -33,3 +33,6 @@ yarn-error.log*
 
 # test data
 /public/uploads
+
+# faunadb
+.faunarc
