@@ -4,6 +4,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import faunadb, { query as q } from 'faunadb'
 import { v4 as uuidv4 } from 'uuid';
 
+
+
+// Add user to database if not found (match by authId)
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   let client: faunadb.Client = null
   if (req.method === "POST") {
