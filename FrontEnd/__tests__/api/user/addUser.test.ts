@@ -1,14 +1,7 @@
 import addUser from '../../../pages/api/user'
-
-jest.mock('faunadb', () => ({
-    ...jest.requireActual('faunadb'),
-    Client: jest.fn().mockImplementation((x) => ({
-        query: jest.fn((x) => Promise.resolve(true)),
-        close: jest.fn().mockResolvedValue(0)
-    })),
-}));
-
 import faunadb from 'faunadb'
+
+jest.mock('faunadb')
 
 describe("Add a user", () => {
     let req, res;
