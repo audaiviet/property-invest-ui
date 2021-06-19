@@ -9,7 +9,7 @@ const useStyle = makeStyles({
         alignItems: 'center'
     },
     titleBox: {
-        marginLeft: "50px"
+        marginLeft: "4rem"
     },
     title: {
         fontSize: "4.2rem",

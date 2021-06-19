@@ -16,10 +16,6 @@ const styles = makeStyles({
         maxWidth: "510px",
         margin: "0 0 0"
     },
-    titleBox: {
-        marginLeft: "50px"
-    }
-
 })
 interface Props {
     title: string;
@@ -28,7 +24,7 @@ interface Props {
 export function SectionTitle({ title, subtitle }: Props) {
     const classes = styles()
     return (
-        <div className={classes.titleBox}>
+        <div>
             <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
                 {title}
             </Typography>

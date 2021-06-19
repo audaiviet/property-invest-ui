@@ -11,21 +11,24 @@ import { Banner } from '@components/Banner/Banner';
 const useStyles = makeStyles({
     background: {
         height: '600px',
-        backgroundColor: "#EDBB99"
+        backgroundColor: "#EDBB99",
+        paddingLeft: "4rem",
     },
     visuals: {
         backgroundColor: "#FFFFFF",
         minHeight: '600px',
+        paddingLeft: "4rem",
     },
     financials: {
         backgroundColor: "#ffffcc",
         height: '600px',
+        paddingLeft: "4rem",
     },
     invest: {
         backgroundColor: "#ccffff",
         paddingBottom: "2rem",
+        paddingLeft: "4rem",
     }
-
 })
 
 function InvestmentOption({ text }) {

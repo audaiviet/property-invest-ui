@@ -3,8 +3,8 @@ const withImages = require("next-images");
 const path = require("path");
 
 module.exports = withPlugins([[withImages]], {
-  future: {
-    webpack5: true,
+  images: {
+    disableStaticImages: true
   },
   webpack(config, options) {
     config.resolve.modules.push(path.resolve("./"));

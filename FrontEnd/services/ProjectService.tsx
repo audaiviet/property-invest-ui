@@ -17,3 +17,7 @@ export async function getTestProjectsData(): Promise<IProject[]> {
 export const useProjects = () => {
     return useQuery('projects', getTestProjectsData)
 }
+
+export const addProject = function(data:IProject): void {
+    console.log(JSON.stringify(data))
+}
