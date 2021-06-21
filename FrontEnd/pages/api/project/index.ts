@@ -3,6 +3,7 @@ import faunadb, { query as q } from 'faunadb'
 import { v4 as uuidv4 } from 'uuid';
 import { IProject } from 'interfaces/IProject';
 import { hasValue } from 'interfaces/StringService';
+import { newApiError } from 'services/ErrorService';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     let client: faunadb.Client = null
@@ -12,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
             const newProjectData: IProject = req.body;
             if (!hasValue(newProjectData.name)) {
-                return res.status(400).json({ msg: "Project must have a name" });
+                return res.status(400).json(newApiError(400, '000002', 'Validation error'));
             }
 
             let found = await client.query(
@@ -20,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             )
 
             if (found) {
-                return res.status(400).json({ msg: "Project already exists" });
+                return res.status(400).json(newApiError(400, '000001', 'Validation error'));
             }
 
             if (!found) {
