@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from '../assets/jss/nextjs-material-kit/pages/projects';
+import styles from '../../assets/jss/nextjs-material-kit/pages/projects';
 import { makeStyles, Typography } from '@material-ui/core';
-import Parallax from '../components/Parallax/Parallax';
-import GridContainer from '../components/Grid/GridContainer';
-import GridItem from '../components/Grid/GridItem';
+import Parallax from '../../components/Parallax/Parallax';
+import GridContainer from '../../components/Grid/GridContainer';
+import GridItem from '../../components/Grid/GridItem';
 import { IProject } from 'interfaces/IProject';
 import { ProjectContainer } from '@components/ProjectContainer/ProjectContainer';
 import { getTestProjectsData, useProjects } from 'services/ProjectService';
