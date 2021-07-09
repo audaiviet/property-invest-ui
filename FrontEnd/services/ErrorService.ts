@@ -6,26 +6,27 @@ interface IError {
 
 export interface IApiResponse {
 
-    type: string;
-    title: string;
-    detail: string;
-    instance?: string;
-    status: number;
-
     success: boolean;
+    status: number;
+    
     data?: any;
-    errors?: IError[];
+
+    type?: string;
+    title?: string;
+    detail?: string;
+    instance?: string;
+    errors?: IError|any[];
 }
 
-export function newApiError(httpStatus: number, appErrorCode: string, errorClass: string = '') {
-    const error:IApiResponse = {
+export function newApiError(httpStatus: number, appErrorCode: string, errorClass: string = '', error: any = undefined): IApiResponse {
+    return {
         success: false,
         type: `${process.env.NEXTAUTH_URL}/${appErrorCode}`,
         detail: errorCodes.get(appErrorCode),
         status: httpStatus,
         title: errorClass,
+        errors: [error]
     }
-    return error
 }
 
 export function getErrorMessage(error: IApiResponse): string {
@@ -38,4 +39,6 @@ export function getErrorMessage(error: IApiResponse): string {
 const errorCodes: Map<string,string> = new Map<string,string>([
     ['000001', 'Project already exists.'],
     ['000002', 'Project name is required.'],
+    ['000003', 'Method not implemented.'],
+    ['000004', 'Could not get projects'],
 ])

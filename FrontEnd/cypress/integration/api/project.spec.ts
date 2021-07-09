@@ -1,12 +1,21 @@
-import { defaultProject } from './../../../interfaces/IProject';
-
+import { IApiResponse } from 'services/ErrorService';
+import { getProjectsByPage } from '../../../services/ProjectService';
+import { defaultProject } from '../../../interfaces/IProject';
 const project = defaultProject
+
 context('Project api', () => {
-    it('Can add a project', () => {
+
+    before(() => {
+    })
+
+    afterEach(() => {
+    });
+
+    it.skip('Can add a project', () => {
         expect(true).to.equal(true)
     })
 
-    it("Can add a new project", () => {
+    it.skip("Can add a new project", () => {
 
         project.name = 'TEST PROJECT 101'
 
@@ -16,7 +25,7 @@ context('Project api', () => {
             .its('body').its('status').should('be.equal', 'Success')
     });
 
-    it('Should not add duplicate project', () => {
+    it.skip('Should not add duplicate project', () => {
         project.name = 'TEST-PROJECT-106'
 
         // Add new project
@@ -41,5 +50,14 @@ context('Project api', () => {
             expect(resp.body.status).to.eq(400)
             expect(resp.body.detail).to.equal('Project already exists.')
         })
+    })
+
+    it('Can get projects', async () => {
+        process.env.FAUNA_KEY = Cypress.env('FAUNA_KEY')
+        console.log("############ Cypress.env: ", Cypress.env())
+        const response: IApiResponse = await getProjectsByPage()
+        expect(response.status).to.equal(200)
+        console.log("############ data:", response.data)
+        delete process.env.FAUNA_KEY
     })
 })

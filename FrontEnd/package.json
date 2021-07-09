@@ -84,7 +84,7 @@
     "@types/react-dom": "^17.0.3",
     "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
-    "cypress": "^7.5.0",
+    "cypress": "^7.7.0",
     "jest": "^27.0.4",
     "react-responsive-carousel": "^3.2.18",
     "start-server-and-test": "^1.12.5",
