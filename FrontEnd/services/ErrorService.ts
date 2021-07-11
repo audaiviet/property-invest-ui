@@ -41,4 +41,5 @@ const errorCodes: Map<string,string> = new Map<string,string>([
     ['000002', 'Project name is required.'],
     ['000003', 'Method not implemented.'],
     ['000004', 'Could not get projects'],
+    ['000005', 'Error deleting project'],
 ])

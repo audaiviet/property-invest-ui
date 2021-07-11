@@ -1,5 +1,5 @@
 import { IApiResponse } from 'services/ErrorService';
-import { getProjectsByPage } from '../../../services/ProjectService';
+import { deleteProject, getProjectsByPage } from '../../../services/ProjectService';
 import { defaultProject } from '../../../interfaces/IProject';
 const project = defaultProject
 
@@ -8,7 +8,7 @@ context('Project api', () => {
     before(() => {
     })
 
-    afterEach(() => {
+    after(() => {
     });
 
     it.skip('Can add a project', () => {
@@ -59,5 +59,9 @@ context('Project api', () => {
         expect(response.status).to.equal(200)
         console.log("############ data:", response.data)
         delete process.env.FAUNA_KEY
+    })
+
+    it('Can delete an existing project', async () => {
+        const response: IApiResponse = await deleteProject('TEST-PROJECT-106')
     })
 })

@@ -71,3 +71,20 @@ export async function getProjectsByPage(): Promise<IApiResponse> {
         client && client.close()
     }
 }
+
+export async function deleteProject(name: string): Promise<IApiResponse> {
+    let client: faunadb.Client = undefined
+    try {
+        client = new faunadb.Client({ secret: process.env.FAUNA_KEY })
+        let response = await client.query(
+            q.Delete(q.Select("ref",q.Get(q.Match(q.Index("projects-name"), name))))
+        )
+        return { success: true, status: 200 };
+    }
+    catch (error) {
+        return newApiError(500, '000005', 'Error deleting project', error);
+    }
+    finally {
+        client && client.close()
+    }
+}

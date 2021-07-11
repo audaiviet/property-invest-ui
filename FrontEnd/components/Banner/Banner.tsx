@@ -1,7 +1,7 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 import * as React from 'react';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme: Theme) => createStyles({
     banner: {
         backgroundImage: (props: Props) => props.imageUrl && `url(${props.imageUrl})` || "url('/static/images/joanna-kosinska-bF2vsubyHcQ-unsplash.jpg')",
         height: '450px',
@@ -13,7 +13,7 @@ const useStyle = makeStyles({
     },
     title: {
         fontSize: "4.2rem",
-        fontWeight: "600",
+        fontWeight: 600,
         display: "inline-block",
         position: "relative",
         marginBottom: "0"
@@ -23,7 +23,7 @@ const useStyle = makeStyles({
         maxWidth: "510px",
         margin: "0 0 0"
     },
-})
+}))
 
 interface Props {
     title?: string,
