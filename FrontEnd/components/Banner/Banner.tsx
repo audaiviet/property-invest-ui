@@ -13,7 +13,6 @@ const useStyle = makeStyles({
     },
     title: {
         fontSize: "4.2rem",
-        fontWeight: "600",
         display: "inline-block",
         position: "relative",
         marginBottom: "0"

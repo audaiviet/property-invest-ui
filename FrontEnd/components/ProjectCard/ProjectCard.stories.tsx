@@ -20,7 +20,14 @@ const project: IProject = {
   estimatedCost: 979224,
   annualInterestRateOffered: 6.26,
   projectManager: "Mirna Francis",
-  description: 'Project to build high quality seven bed property finished to a high standard in the popular location of Hall Green, three bathrooms, three receptions, striking kitchen and off road parking.'
+  description: 'Project to build high quality seven bed property finished to a high standard in the popular location of Hall Green, three bathrooms, three receptions, striking kitchen and off road parking.',
+  images: [],
+  amountRequired: 1000000,
+  amountReceived: 500000,
+  investmentUnit: 1,
+  isActive: false,
+  isDeleted: false,
+  isCompleted: false
 }
 
 export const Standard = Template.bind({});

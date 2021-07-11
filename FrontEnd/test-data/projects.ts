@@ -9,7 +9,14 @@ const projectsData = [
        "annualInterestRateOffered":74,
        "projectManager":"Audie Dwelling",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Plain Radiography of L Pulm Vein using H Osm Contrast"
+       "description":"Plain Radiography of L Pulm Vein using H Osm Contrast",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae180500000c",
@@ -21,7 +28,14 @@ const projectsData = [
        "annualInterestRateOffered":63,
        "projectManager":"Amelia Branton",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Inspection of Brain, Percutaneous Approach"
+       "description":"Inspection of Brain, Percutaneous Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae180500000d",
@@ -33,7 +47,14 @@ const projectsData = [
        "annualInterestRateOffered":84,
        "projectManager":"Lemmie MacDearmont",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Excision of Optic Nerve, Percutaneous Approach"
+       "description":"Excision of Optic Nerve, Percutaneous Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae180500000e",
@@ -45,7 +66,14 @@ const projectsData = [
        "annualInterestRateOffered":76,
        "projectManager":"Nadya Althrop",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Destruction of R Shoulder Bursa/Lig, Open Approach"
+       "description":"Destruction of R Shoulder Bursa/Lig, Open Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae180500000f",
@@ -57,7 +85,14 @@ const projectsData = [
        "annualInterestRateOffered":52,
        "projectManager":"Ludwig Blaik",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Reposition Left Metacarpal, Percutaneous Endoscopic Approach"
+       "description":"Reposition Left Metacarpal, Percutaneous Endoscopic Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae1805000010",
@@ -69,7 +104,14 @@ const projectsData = [
        "annualInterestRateOffered":60,
        "projectManager":"Cad Baudinelli",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Drainage of Left Brachial Artery, Perc Endo Approach"
+       "description":"Drainage of Left Brachial Artery, Perc Endo Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae1805000011",
@@ -81,7 +123,14 @@ const projectsData = [
        "annualInterestRateOffered":94,
        "projectManager":"Paloma Seabon",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Alteration of R Ext Ear with Nonaut Sub, Perc Approach"
+       "description":"Alteration of R Ext Ear with Nonaut Sub, Perc Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae1805000012",
@@ -93,7 +142,14 @@ const projectsData = [
        "annualInterestRateOffered":27,
        "projectManager":"Lorrie Worvell",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Restriction of Anus with Extralum Dev, Extern Approach"
+       "description":"Restriction of Anus with Extralum Dev, Extern Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae1805000013",
@@ -105,7 +161,14 @@ const projectsData = [
        "annualInterestRateOffered":17,
        "projectManager":"Ania Gall",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Drainage of Lum Disc with Drain Dev, Perc Approach"
+       "description":"Drainage of Lum Disc with Drain Dev, Perc Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     },
     {
        "id":"608fc33ffc13ae1805000014",
@@ -117,7 +180,14 @@ const projectsData = [
        "annualInterestRateOffered":23,
        "projectManager":"Maddy Ruggieri",
        "images": ['/static/images/bg.jpg','/static/images/bg2.jpg','/static/images/bg3.jpg','/static/images/bg4.jpg','/static/images/bg7.jpg',],
-       "description":"Repair Right Carpal, External Approach"
+       "description":"Repair Right Carpal, External Approach",
+       "amountRequired": 0, 
+       "amountReceived": 0, 
+       "investmentUnit": 0, 
+       "interestRate": 0,
+       "isActive": false,
+       "isDeleted": false,
+       "isCompleted": false,
     }
  ];
 
