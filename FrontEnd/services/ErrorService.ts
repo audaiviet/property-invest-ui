@@ -1,7 +1,7 @@
 interface IError {
     code: number;
     message: string;
-    field: string;
+    field?: string;
 }
 
 export interface IApiResponse {
@@ -15,7 +15,7 @@ export interface IApiResponse {
     title?: string;
     detail?: string;
     instance?: string;
-    errors?: IError|any[];
+    errors?: (IError|any)[];
 }
 
 export function newApiError(httpStatus: number, appErrorCode: string, errorClass: string = '', error: any = undefined): IApiResponse {
@@ -42,4 +42,7 @@ const errorCodes: Map<string,string> = new Map<string,string>([
     ['000003', 'Method not implemented.'],
     ['000004', 'Could not get projects'],
     ['000005', 'Error deleting project'],
+    ['000006', 'Could not create project'],
+    ['000007', 'Could not update project'],
+    ['100000', 'Server error'],
 ])

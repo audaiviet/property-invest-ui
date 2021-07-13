@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import faunadb, { query as q } from 'faunadb'
 import { v4 as uuidv4 } from 'uuid';
 import { IProject } from 'interfaces/IProject';
-import { hasValue } from 'interfaces/StringService';
+import { hasValue } from 'services/StringService';
 import { newApiError } from 'services/ErrorService';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 const what = await client.query(
                     q.Create(q.Collection('projects'), { data: newProjectData })
                 )
-                return res.status(201).json({ status: "Success", data: newProjectData.id });
+                return res.status(201).json({ success: true, status: 201, data: newProjectData.id });
             }
         } catch (error) {
             return res.status(500).json({

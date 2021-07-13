@@ -1,67 +1,91 @@
+import { IProject } from './../../../interfaces/IProject';
 import { IApiResponse } from 'services/ErrorService';
-import { deleteProject, getProjectsByPage } from '../../../services/ProjectService';
+import { addProject, deleteProject, getProject, getProjectsByPage, updateProject } from '../../../services/ProjectService';
 import { defaultProject } from '../../../interfaces/IProject';
+
 const project = defaultProject
+const uuid = () => Cypress._.random(0, 1e6)
 
 context('Project api', () => {
 
-    before(() => {
-    })
-
-    after(() => {
-    });
-
-    it.skip('Can add a project', () => {
-        expect(true).to.equal(true)
-    })
-
-    it.skip("Can add a new project", () => {
-
-        project.name = 'TEST PROJECT 101'
-
-        cy.visit("http://localhost:3000");
-        cy.request("POST", "api/project", project)
-            .its('status').should('be.equal', 201)
-            .its('body').its('status').should('be.equal', 'Success')
-    });
-
-    it.skip('Should not add duplicate project', () => {
-        project.name = 'TEST-PROJECT-106'
-
-        // Add new project
-        cy.request({
-            failOnStatusCode: false,
-            method: 'POST',
-            url: 'http://localhost:3000/api/project',
-            body: project
-        }).then((response) => {
-            console.log(response)
-            expect(response.status).to.equal(201)
-        })
-
-        // Add duplicate
-        cy.request({
-            failOnStatusCode: false,
-            method: 'POST',
-            url: 'http://localhost:3000/api/project',
-            body: project
-        }).then((resp) => {
-            expect(resp.status).to.eq(400)
-            expect(resp.body.status).to.eq(400)
-            expect(resp.body.detail).to.equal('Project already exists.')
-        })
-    })
-
-    it('Can get projects', async () => {
+    beforeEach(() => {
         process.env.FAUNA_KEY = Cypress.env('FAUNA_KEY')
-        console.log("############ Cypress.env: ", Cypress.env())
-        const response: IApiResponse = await getProjectsByPage()
-        expect(response.status).to.equal(200)
-        console.log("############ data:", response.data)
+    })
+
+    afterEach(() => {
         delete process.env.FAUNA_KEY
+    });
+
+    it('Can add a new project', async () => {
+        project.name = `TEST.PROJECT.ADD.${uuid()}`
+
+        let response: IApiResponse = await addProject(project)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+
+        response = await deleteProject(project.name)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+    });
+
+    it('Can update a project', async () => {
+        project.name = `TEST.PROJECT.UPDATE.${uuid()}`
+
+        let response: IApiResponse = await addProject(project)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+
+        response = await getProject(project.name)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+
+        const foundProject: IProject = response.data.data
+        const newProjectManager = `Super Manager No. ${uuid()}`
+
+        expect(foundProject.projectManager).not.to.equal(newProjectManager)
+        
+        foundProject.projectManager = newProjectManager
+        response = await updateProject(foundProject)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+
+        response = await getProject(foundProject.name)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+
+        expect(foundProject.projectManager).to.equal(newProjectManager)
+    })
+
+    it('Should not add duplicate project', async () => {
+        project.name = `TEST.PROJECT.DUPLICATE.${uuid()}`
+
+        let response: IApiResponse = await addProject(project)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+
+        response = await addProject(project)
+        expect(response.success).to.equal(false)
+        expect(response.status).to.equal(400)
+
+        response = await deleteProject(project.name)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
     })
 
     it('Can delete an existing project', async () => {
-        const response: IApiResponse = await deleteProject('TEST-PROJECT-106')
+        project.name = `TEST.DELETE.${uuid()}`
+
+        let response: IApiResponse = await addProject(project)
+        expect(response.status).to.equal(200)
+
+        response = await deleteProject(project.name)
+        expect(response.success).to.equal(true)
+        expect(response.status).to.equal(200)
+    })
+    
+    it('Can get projects', async () => {
+        const response: IApiResponse = await getProjectsByPage()
+        expect(response.status).to.equal(200)
     })
 })
+
