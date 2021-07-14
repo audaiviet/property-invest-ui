@@ -1,6 +1,6 @@
 import { IProject } from './../../../interfaces/IProject';
 import { IApiResponse } from 'services/ErrorService';
-import { addProject, deleteProject, getProject, getProjectsByPage, updateProject } from '../../../services/ProjectService';
+import { addProject, deleteProject, getProject, getProjectsByPage, IPageCursor, updateProject } from '../../../services/ProjectService';
 import { defaultProject } from '../../../interfaces/IProject';
 
 const project = defaultProject
@@ -84,7 +84,8 @@ context('Project api', () => {
     })
     
     it('Can get projects', async () => {
-        const response: IApiResponse = await getProjectsByPage()
+        const pageCursor: IPageCursor = {page: 0, before: undefined, after: undefined, next: true}
+        const response: IApiResponse = await getProjectsByPage(pageCursor)
         expect(response.status).to.equal(200)
     })
 })

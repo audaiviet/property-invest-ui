@@ -8,6 +8,13 @@ import faunadb, { query as q } from 'faunadb'
 import { Constants } from '../constants';
 import { v4 as uuidv4 } from 'uuid';
 
+export interface IPageCursor {
+    page: number
+    before: any
+    after: any
+    next: boolean
+}
+
 export async function getProjectsData(): Promise<IProject[]> {
     const res = await fetch(process.env.PROJECTS_SERVICE);
     if (!res.ok) {
@@ -49,20 +56,28 @@ export async function getAllProjects(req: NextApiRequest, res: NextApiResponse) 
     }
 }
 
-export async function getProjectsByPage(): Promise<IApiResponse> {
+export async function getProjectsByPage(cursor: IPageCursor): Promise<IApiResponse> {
+    const { before, after, next } = cursor
+    let faunadbPageCursor = { size: Constants.PROJECT_PAGESIZE }
+    if (before && !next) {
+        faunadbPageCursor['before'] = before
+    }
+    if (after && next) {
+        faunadbPageCursor['after'] = after
+    }
     let client: faunadb.Client = undefined
     try {
         client = new faunadb.Client({ secret: process.env.FAUNA_KEY })
         let found = await client.query(
             q.Map(
-                q.Paginate(q.Match(q.Index("all-projects")), { size: Constants.PROJECT_PAGESIZE }),
+                q.Paginate(q.Match(q.Index("all-projects")), faunadbPageCursor),
                 x => q.Get(x)
             )
         )
         return { success: true, status: 200, data: found };
     }
     catch (error) {
-        return newApiError(500, '000004', 'Could not get projects', error);
+        return newApiError(500, '000004', 'Project api', error);
     }
     finally {
         client && client.close()
