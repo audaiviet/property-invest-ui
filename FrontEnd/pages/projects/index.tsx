@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import styles from '../../assets/jss/nextjs-material-kit/pages/projects';
+import styles from 'assets/jss/nextjs-material-kit/pages/projects';
 import { makeStyles, Typography } from '@material-ui/core';
 import Parallax from '../../components/Parallax/Parallax';
 import GridContainer from '../../components/Grid/GridContainer';
@@ -45,13 +45,13 @@ function Projects() {
         data: response,
         isFetching,
         isPreviousData,
-    } = useQuery(['projects', pageCursor], () => getProjectsByPage(pageCursor), { keepPreviousData: true })
+    } = useQuery(['projects', pageCursor], () => getProjectsByPage(pageCursor), { keepPreviousData: true, staleTime: 1000 })
 
     let projects: IProject[] = [], before: unknown = undefined, after: unknown = undefined
-    if (response.success) {
+    if (response?.success) {
         before = response.data.before
         after = response.data.after
-        projects = Array.from(response.data.data).map((item: faunadbDoc, idx): IProject => item.data as IProject)
+        projects = Array.from(response.data.data).map((item: faunadbDoc, idx): IProject => item.data)
     } else {
         projects = [], before = undefined, after = undefined
     }

@@ -42,32 +42,6 @@ export default function HeaderLinks(props) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <CustomDropdown
-          noLiPadding
-          navDropdown
-          buttonText="UI Demo"
-          buttonProps={{
-            className: classes.navLink,
-            color: "transparent",
-          }}
-          buttonIcon={Apps}
-          dropdownList={[
-            <Link href="/components">
-              <a className={classes.dropdownLink}>All components</a>
-            </Link>,
-            <Link href="/landing">
-              <a className={classes.dropdownLink}>Landing page</a>
-            </Link>,
-            <Link href="/profile">
-              <a className={classes.dropdownLink}>Profile page</a>
-            </Link>,
-            <Link href="/login">
-              <a className={classes.dropdownLink}>Login page</a>
-            </Link>,
-          ]}
-        />
-      </ListItem>
-      <ListItem className={classes.listItem}>
         {session && (
           <Button
             color="transparent"
