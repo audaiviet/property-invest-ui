@@ -68,7 +68,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 content="width=device-width, initial-scale=1, shrink-to-fit=no"
               />
               <meta name="theme-color" content="#000000" />
-              <title>Property investment for you</title>
+              <title>Property investment</title>
             </Head>
             <Header
               color="transparent"

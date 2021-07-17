@@ -45,7 +45,7 @@ function Projects() {
         data: response,
         isFetching,
         isPreviousData,
-    } = useQuery(['projects', pageCursor], () => getProjectsByPage(pageCursor), { keepPreviousData: true, staleTime: 1000 })
+    } = useQuery<any,Error>(['projects', pageCursor], () => getProjectsByPage(pageCursor), { keepPreviousData: true, staleTime: 1000 })
 
     let projects: IProject[] = [], before: unknown = undefined, after: unknown = undefined
     if (response?.success) {

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "next",
-    "build": "rm -rf ./build && SET NODE_ENV=production next build",
+    "build": "rm -rf ./build && NODE_ENV=production next build",
     "start": "next start -p 8080",
     "deploy": "npm run build && gcloud app deploy",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev",

@@ -37,7 +37,7 @@ export default function Index(props) {
           <GridContainer>
             <GridItem>
               <div className={classes.brand}>
-                <h1 className={classes.title}>Property Investment for you</h1>
+                <h1 className={classes.title}>INVEST IN REAL ESTATE WITH GUARANTEE RETURN OF 6%</h1>
                 <h3 className={classes.subtitle}>
                   A new way to invest in properties
                 </h3>
