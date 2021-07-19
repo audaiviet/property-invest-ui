@@ -1,33 +1,18 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import styles from 'assets/jss/nextjs-material-kit/pages/projects';
-import { makeStyles, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import Parallax from '../../components/Parallax/Parallax';
 import GridContainer from '../../components/Grid/GridContainer';
 import GridItem from '../../components/Grid/GridItem';
 import { IProject } from 'interfaces/IProject';
 import { ProjectContainer } from '@components/ProjectContainer/ProjectContainer';
-import { getProjectsByPage, getTestProjectsData, IPageCursor } from 'services/ProjectService';
-import { QueryClient, useQuery } from 'react-query';
-import { dehydrate } from 'react-query/hydration';
-interface Props {
-    projects: IProject[]
-}
+import { getProjectsByPage, IPageCursor } from 'services/ProjectService';
+import { useQuery } from 'react-query';
+import { IApiResponse } from 'services/ErrorService';
 
 const useStyles = makeStyles(styles);
 const nullPageCursor: IPageCursor = { page: 0, before: undefined, after: undefined, next: true }
-
-export async function getStaticProps(context) {
-    const queryClient = new QueryClient()
-    await queryClient.prefetchQuery(['projects', nullPageCursor], () => getProjectsByPage(nullPageCursor))
-
-    return {
-
-        props: {
-            dehydratedState: JSON.parse(JSON.stringify(dehydrate(queryClient))),
-        },
-    }
-}
 
 interface faunadbDoc {
     ts: number,
@@ -45,7 +30,7 @@ function Projects() {
         data: response,
         isFetching,
         isPreviousData,
-    } = useQuery<any,Error>(['projects', pageCursor], () => getProjectsByPage(pageCursor), { keepPreviousData: true, staleTime: 1000 })
+    } = useQuery<IApiResponse,Error>(['projects', pageCursor], () => getProjectsByPage(pageCursor), { keepPreviousData: true, staleTime: 1000 })
 
     let projects: IProject[] = [], before: unknown = undefined, after: unknown = undefined
     if (response?.success) {
