@@ -8,6 +8,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { IProject } from 'interfaces/IProject';
+import { useQueryClient } from 'react-query';
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles({
   root: {
@@ -22,6 +24,14 @@ const useStyles = makeStyles({
 
 export function ProjectCard({project} : {project: IProject}) {
   const classes = useStyles();
+  const client = useQueryClient()
+  const router = useRouter()
+  
+  function learnMore(e: React.SyntheticEvent<EventTarget>, project: IProject) {
+    e.preventDefault()
+    client.setQueryData('currentProject', project)
+    router.push(`/projects/${project.id}`)
+  }
 
   return (
     <Card className={classes.root}>
@@ -43,10 +53,7 @@ export function ProjectCard({project} : {project: IProject}) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Invest
-        </Button>
-        <Button size="small" color="primary" href={`/projects/${project.id}`}>
+        <Button size="small" color="primary" onClick={e=>learnMore(e, project)}>
           Learn More
         </Button>
       </CardActions>

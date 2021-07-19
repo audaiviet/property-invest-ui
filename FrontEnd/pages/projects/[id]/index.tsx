@@ -7,6 +7,7 @@ import Carousel from '@components/Carousel/Carousel';
 import { SectionTitle } from '@components/SectionTitle/SectionTitle';
 import { BoxButton } from '@components/BoxButton/BoxButton';
 import { Banner } from '@components/Banner/Banner';
+import { useQueryClient } from 'react-query';
 
 const useStyles = makeStyles({
     background: {
@@ -45,12 +46,11 @@ function InvestmentOption({ text }) {
 }
 
 export default function Project(props) {
-    const router = useRouter()
-    const { id } = router.query
     const classes = useStyles();
-    const { data, status } = useProjects()
-    const projects = data || [];
-    const project: IProject = projects.find((item, index) => item.id === id)
+
+    const queryClient = useQueryClient()
+    const project: IProject = {...queryClient.getQueryData('currentProject')}
+
     return (<>
         <Banner title='Project details' subtitle={`For project ${project && project.name}`} />
         <section className={classes.background}>
